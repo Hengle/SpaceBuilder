@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1a743eff5187742821cd6904443298, type: 3}
+  m_Name: Ship Building
+  m_EditorClassIdentifier: 
+  BuildingName: Ship
+  BuildingSprite: {fileID: 21300000, guid: d37f94cac791a8b4ca2d3c9ae4864082, type: 3}
+  BuildingPrefab: {fileID: 932785820157322542, guid: 8251ad2a28aee664eb918fab60697e1e,
+    type: 3}

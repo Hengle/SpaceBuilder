@@ -1,48 +1,113 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
     class BuildingSelectionSystem : MonoBehaviour
     {
-    
-        //Highlight System
-        private GameObject highlightObject;
-    
+        [Header("Selection Masks")]
         [SerializeField] private LayerMask displayOutlineLayerMask;
-    
-        private BuildingScriptable selectedBuilding;
-    
-        private bool displayBuildingOutline = false;
+        [SerializeField] private LayerMask buildingLayerMask;
 
-        public void BuildingSelected(BuildingScriptable building)
+        private GameObject highlightObject;
+        private BuildingScripts destroyBuilding;
+        
+        private BuildingScriptable selectedBuilding;
+
+        private enum SelectionStates
+        {
+            Wait,
+            DisplayOutline,
+            EnableBuildingDeletion,
+            ConfirmBuildingDeletion
+        }
+        
+        [Header("Debug")]
+        [SerializeField] private SelectionStates selectionState = SelectionStates.Wait;
+    
+#region Events
+
+        public void ConfirmSelection()
+        {
+        
+            switch (selectionState)
+            {
+                case SelectionStates.Wait:
+                    break;
+                case SelectionStates.DisplayOutline:
+                    ConfirmBuildingSelection();
+                    break;
+                case SelectionStates.EnableBuildingDeletion:
+                    ConfirmBuildingDeletion();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        
+        }
+
+        public void EnableBuildingSelection(BuildingScriptable building)
         {
             selectedBuilding = building;
 
-            if (displayBuildingOutline) 
+            if (selectionState == SelectionStates.DisplayOutline) 
                 Destroy(highlightObject);
         
-            displayBuildingOutline = true;
+            selectionState  = SelectionStates.DisplayOutline;
         }
-
-        public void ConfirmBuildingSelection()
+        
+        private void ConfirmBuildingSelection()
         {
-            if (displayBuildingOutline)
-            {
-                BuildingScripts building = Instantiate(selectedBuilding.BuildingPrefab, 
-                    highlightObject.transform.position, Quaternion.identity, this.transform).GetComponent<BuildingScripts>();
-                building.ConfirmPlacement();
-            
-                DisableSelection(true);
-            }
+            if (selectionState != SelectionStates.DisplayOutline) return;
+
+            BuildingScripts building = Instantiate(selectedBuilding.BuildingPrefab,
+                highlightObject.transform.position, Quaternion.identity, this.transform).GetComponent<BuildingScripts>();
+            building.ConfirmPlacement();
+
+            DisableSelection(true);
         }
-    
+        
+        public void EnableBuildingDeletion()
+        {
+            selectionState = SelectionStates.EnableBuildingDeletion;
+        }
+        
+        public void ConfirmBuildingDeletion()
+        {
+            EventSystem.OnBuildingDeletionEvent(destroyBuilding);
+        }
+        
+        #endregion
+        
+
         private void Update()
         {
-            if (!displayBuildingOutline) return;
+
+            switch (selectionState)
+            {
+                case SelectionStates.Wait:
+                    break;
+                case SelectionStates.DisplayOutline:
+                    BuildingOutline();
+                    break;
+                case SelectionStates.EnableBuildingDeletion:
+                    WaitForBuildingDeletion();
+                    break;
+                case SelectionStates.ConfirmBuildingDeletion:
+                    ConfirmBuildingDeletion();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #region Updates
         
+        private void BuildingOutline()
+        {
             GameObject highlightTarget =
                 RaycastManager.Instance.GetGameObjectFromRaycast(displayOutlineLayerMask, out var hit);
-        
+
             //If Mouse position is possible target
             if (highlightTarget)
             {
@@ -58,14 +123,29 @@ namespace Player
             else
             {
                 if (!highlightObject) return;
-            
+
                 DisableSelection(true);
             }
         }
+        
+        private void WaitForBuildingDeletion()
+        {
+            GameObject building =  RaycastManager.Instance.GetGameObjectFromRaycast(buildingLayerMask, out var hit);
 
+            if (!building) return;
+            
+            BuildingScripts script = building.GetComponentInParent<BuildingScripts>();
+            if (script)
+            {
+                destroyBuilding = script;
+            }
+        }
+        
+        #endregion
+        
         private void DisableSelection(bool destroy)
         {
-            displayBuildingOutline = false;
+            selectionState = SelectionStates.Wait;
 
             if (destroy)
                 Destroy(highlightObject);
@@ -73,4 +153,6 @@ namespace Player
                 highlightObject = null;
         }
     }
+    
+   
 }

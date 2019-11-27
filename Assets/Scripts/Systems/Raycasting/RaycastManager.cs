@@ -11,15 +11,15 @@ public class RaycastManager : Singleton<RaycastManager>
     [SerializeField] private float maxRaycastDistance = 50f;
     [SerializeField] private int raycastCheckCount = 5;
     
-    private Mouse currentMouse;
-    private Camera mainCamera;
+    private Mouse currentMouse; 
+    [SerializeField] private Camera mainCamera;
     
 #if DEBUGGING
     private Vector3 hitLocation;
 #endif
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
         currentMouse = Mouse.current;
@@ -60,6 +60,8 @@ public class RaycastManager : Singleton<RaycastManager>
     
     public GameObject GetGameObjectFromRaycast(LayerMask layerMask, out RaycastHit hit)
     {
+        if (!mainCamera) mainCamera = Camera.main;
+        
         Ray ray = mainCamera.ScreenPointToRay(currentMouse.position.ReadValue());
         if (Physics.Raycast(ray, out hit, maxRaycastDistance, layerMask))
         {
@@ -71,6 +73,8 @@ public class RaycastManager : Singleton<RaycastManager>
     
     public GameObject[] GetGameObjectsFromRaycast(LayerMask layerMask)
     {
+        if (!mainCamera) mainCamera = Camera.main;
+        
         RaycastHit[] hits = new RaycastHit[raycastCheckCount];
         Ray ray = mainCamera.ScreenPointToRay(currentMouse.position.ReadValue());
         var size = Physics.RaycastNonAlloc(ray, hits, maxRaycastDistance, layerMask);

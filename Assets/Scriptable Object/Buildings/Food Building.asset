@@ -16,3 +16,4 @@ MonoBehaviour:
   BuildingSprite: {fileID: 21300000, guid: a7bdade7031e1a9479f3fe4c3ce00c5c, type: 3}
   BuildingPrefab: {fileID: 3404115915300622815, guid: 37b6586603fa93e4bb9c0072409612da,
     type: 3}
+  BuildingType: Food

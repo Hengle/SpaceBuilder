@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807534626138966704}
   - component: {fileID: 8929972465836674659}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,8 +56,8 @@ GameObject:
   - component: {fileID: 3481060921445048277}
   - component: {fileID: 1441444050026121578}
   - component: {fileID: 4349682529400560158}
-  - component: {fileID: 2194404422654639759}
-  m_Layer: 0
+  - component: {fileID: 8108498783091142517}
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2194404422654639759
+--- !u!65 &8108498783091142517
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

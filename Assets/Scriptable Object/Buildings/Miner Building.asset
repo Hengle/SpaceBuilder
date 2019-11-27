@@ -16,3 +16,4 @@ MonoBehaviour:
   BuildingSprite: {fileID: 21300000, guid: c53f957b851816843bc7d7ea1a7cb803, type: 3}
   BuildingPrefab: {fileID: 698675210957740183, guid: 50c951e1bc7167f49bca6620a531ce6a,
     type: 3}
+  BuildingType: Miner

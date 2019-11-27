@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Label text="Building Info" name="Building Info Label" class="bold">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </ui:Label>
+    <ui:TextField picking-mode="Ignore" label="Building Name" value="filler text" binding-path="BuildingName" name="Building Name">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </ui:TextField>
+    <uie:PropertyField label="Building Sprite" name="Building Sprite" binding-path="BuildingSprite" style="height: 33px; width: 343px;">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </uie:PropertyField>
+    <ui:TextField picking-mode="Ignore" label="Building Type" name="Building Type" binding-path="BuildingType" readonly="false">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </ui:TextField>
+    <uie:PropertyField name="Building Prefab" label="Building Prefab" binding-path="BuildingPrefab" style="height: 35px;">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </uie:PropertyField>
+</ui:UXML>

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1a743eff5187742821cd6904443298, type: 3}
   m_Name: Energy Building
   m_EditorClassIdentifier: 
-  BuildingName: Energy Building
+  BuildingName: Energy
   BuildingSprite: {fileID: 21300000, guid: 126e1158635dae647815c3c2d489901c, type: 3}
   BuildingPrefab: {fileID: 2931048615291936389, guid: 2f52c735b0676dd4682015e8538939e8,
     type: 3}
+  BuildingType: Energy

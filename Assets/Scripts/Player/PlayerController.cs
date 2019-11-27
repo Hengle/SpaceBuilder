@@ -13,18 +13,19 @@ public class PlayerController : MonoBehaviour
         if (!selectionSystem) selectionSystem = selectionSystem = gameObject.AddComponent<BuildingSelectionSystem>();
         
         //Calls whenever a building is selected from the UI.
-        EventSystem.OnBuildingSelected += selectionSystem.BuildingSelected;
+        EventSystem.OnBuildingSelected += selectionSystem.EnableBuildingSelection;
+        EventSystem.OnBuildingRemoval += selectionSystem.EnableBuildingDeletion;
     }
 
-    public void ConfirmBuildingSelection()
+    public void ConfirmSelection()
     {
         Debug.Log("Confirm Selection");
-        selectionSystem.ConfirmBuildingSelection();
+        selectionSystem.ConfirmSelection();
     }
 
     private void OnDisable()
     {
-        EventSystem.OnBuildingSelected -= selectionSystem.BuildingSelected;
+        EventSystem.OnBuildingSelected -= selectionSystem.EnableBuildingSelection;
     }
 
 
@@ -33,9 +34,5 @@ public class PlayerController : MonoBehaviour
         selectionSystem = GetComponentInChildren<BuildingSelectionSystem>();
     }
 
-
-    private void Update()
-    {
-
-    }
+    
 }

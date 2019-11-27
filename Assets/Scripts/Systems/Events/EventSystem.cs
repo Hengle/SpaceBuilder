@@ -4,14 +4,18 @@ using UnityEngine;
 
 public static class EventSystem
 {
-    public delegate void BuildingSelectedEvent(BuildingScriptable building);
-    public static event BuildingSelectedEvent OnBuildingSelected;
+    public delegate void BuildingSelectionEvent(BuildingScriptable building);
+    public static event BuildingSelectionEvent OnBuildingSelected;
     
-    public delegate void BuildingPlacementEvent(BuildingScripts building);
-    public static event BuildingPlacementEvent OnBuildingPlacement;
+    public static event BuildingRemovalSelectionEvent OnBuildingRemoval;
+    public delegate void BuildingRemovalSelectionEvent();
+    
+    public delegate void BuildingEvent(BuildingScripts building);
+    
+    public static event BuildingEvent OnBuildingPlacement;
+    public static event BuildingEvent OnBuildingDeletion;
     
     
-
     public static void OnBuildingSelectedEvent(BuildingScriptable building)
     {
         OnBuildingSelected?.Invoke(building);
@@ -20,5 +24,15 @@ public static class EventSystem
     public static void OnBuildingPlacementEvent(BuildingScripts building)
     {
         OnBuildingPlacement?.Invoke(building);
+    }
+
+    public static void OnBuildingRemovalEvent()
+    {
+        OnBuildingRemoval?.Invoke();
+    }
+
+    public static void OnBuildingDeletionEvent(BuildingScripts building)
+    {
+        OnBuildingDeletion?.Invoke(building);
     }
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   BuildingSprite: {fileID: 21300000, guid: d37f94cac791a8b4ca2d3c9ae4864082, type: 3}
   BuildingPrefab: {fileID: 932785820157322542, guid: 8251ad2a28aee664eb918fab60697e1e,
     type: 3}
+  BuildingType: Ship

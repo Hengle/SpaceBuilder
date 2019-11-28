@@ -14,4 +14,10 @@
     <uie:PropertyField name="Building Prefab" label="Building Prefab" binding-path="BuildingPrefab" style="height: 35px;">
         <Style src="BuildingScriptable_Editor.uss" />
     </uie:PropertyField>
+    <uie:PropertyField binding-path="CreationTime" name="Creation Time" label="Creation Time">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </uie:PropertyField>
+    <uie:PropertyField name="Resource Generation Amount" label="Resource Generation Amount" binding-path="ResourceGenerationAmount">
+        <Style src="BuildingScriptable_Editor.uss" />
+    </uie:PropertyField>
 </ui:UXML>

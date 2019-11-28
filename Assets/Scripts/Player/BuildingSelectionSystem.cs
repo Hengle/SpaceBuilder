@@ -1,4 +1,5 @@
 ﻿using System;
+using Gameplay.Building;
 using UnityEngine;
 
 namespace Player
@@ -101,7 +102,7 @@ namespace Player
             }
         }
 
-        #region Updates
+        #region State Machine
         
         private void BuildingOutline()
         {

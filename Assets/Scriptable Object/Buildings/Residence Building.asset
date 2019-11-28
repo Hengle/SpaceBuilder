@@ -17,3 +17,5 @@ MonoBehaviour:
   BuildingPrefab: {fileID: 6977015450135381221, guid: 0f3c84a5fe1f90c4aa3a740e4613f874,
     type: 3}
   BuildingType: Residence
+  CreationTime: 10
+  ResourceGenerationAmount: 10

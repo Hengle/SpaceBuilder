@@ -1,11 +1,43 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-public class BuildingScripts : MonoBehaviour
+namespace Gameplay.Building
 {
-    public BuildingScriptable building;
-   
-    public void ConfirmPlacement()
+    public abstract class BuildingScripts : MonoBehaviour
     {
-        EventSystem.OnBuildingPlacementEvent(this);
+        public bool Active = true;
+    
+        [Header("Building Scriptable Object")]
+        public BuildingScriptable building;
+    
+        protected ResourceManager resourceManager;
+    
+        public void Initialize(ResourceManager resourceManager)
+        {
+            this.resourceManager = resourceManager;
+            StartResourceLoop();
+        }
+
+        public virtual void DestroyBuilding()
+        {
+   
+        }
+        
+        
+
+        private void StartResourceLoop()
+        {
+            StartCoroutine(ResourceLoop());
+        }
+
+        protected virtual IEnumerator ResourceLoop()
+        {
+            return null;
+        }
+
+        public void ConfirmPlacement()
+        {
+            EventSystem.OnBuildingPlacementEvent(this);
+        }
     }
 }

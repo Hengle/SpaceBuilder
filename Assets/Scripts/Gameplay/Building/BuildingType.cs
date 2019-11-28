@@ -8,7 +8,7 @@ public class BuildingType
     public static BuildingType Null { get; } = new BuildingType("Null" , -1);
     public static BuildingType Residence { get; } = new BuildingType("Residence" , 0);
     public static  BuildingType Food { get; } =  new BuildingType("Food", 1);
-    public static  BuildingType Miner { get; } = new BuildingType("Miner",2);
+    public static  BuildingType Miner { get; } = new BuildingType("Ore",2);
     public static  BuildingType Energy { get; } = new BuildingType("Energy",3);
     public static  BuildingType Ship { get; } = new BuildingType("Ship",4);
 

@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/UI.unity
     guid: 4c18031044436d64081273a33e9d214b
   - enabled: 1
-    path: Assets/Scenes/CityBuilding_Earth.unity
-    guid: d1c6e136c30e96e43812eca11a134784
-  - enabled: 1
-    path: Assets/Scenes/CityBuilding_Mars.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/CityBuilding_Neptune.unity
-    guid: b09da6ec7ac648a41a6638805bbf132a
-  - enabled: 1
     path: Assets/Scenes/CityBuilding_Venus.unity
     guid: 3f7af88a2fcb7654ca0060f16f94683a
+  - enabled: 1
+    path: Assets/Scenes/CityBuilding_Eath.unity
+    guid: 3578180dc732ca44594e381abb666c47
+  - enabled: 1
+    path: Assets/Scenes/CityBuilding_Mars.unity
+    guid: 7c9c6639d2489e0478cca9421d1ce01d
+  - enabled: 1
+    path: Assets/Scenes/CityBuilding_Neptune.unity
+    guid: 758f98f0897ca8e47a4707bf347d86af
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9d3d0d989cf6c7a4e99f3f6eb665cfe5,
       type: 2}
